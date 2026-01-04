@@ -1,0 +1,110 @@
+{
+	"game": {
+		"name": "FantaBurger Delivery Tycoon",
+		"version": "6.7",
+		"developers": "I Meccanici Trappolai"
+	},
+
+	"economy": {
+		"initial_balance": 500.0,
+		"rent": 20.0,
+		"daily_tax": 75.0,
+		"employee_salary": 30.0,
+		"utility_price": 20.0
+	},
+
+	"gameplay": {
+		"initial_reputation": 50.0,
+		"max_concurrent_orders": 3,
+		"order_timeout": 3,
+		"customer_patience": 50,
+		"max_burgers_per_order": 3,
+		"starting_difficulty": "easy",
+		"unlock": {
+			"new_recipe": 100.0,
+			"new_employee": 50.0,
+			"upgrade_kitchen": 1000.0
+		}
+	},
+
+	"time": {
+		"working_start": 11,
+		"working_end": 23,
+		"days": 7
+	},
+
+	"events": {
+		"enabled": true,
+		"min_interval": 4,
+		"max_interval": 8,
+		"event_duration": 3,
+		"special_events": {
+			"rush_hour": true,
+			"food_critic": true,
+			"health_inspection": true,
+			"employee_sick": true,
+			"lucky_day": true,
+			"broken_equipment": true,
+			"weather_bad": true,
+			"theft": true
+		},
+		"probabilities": {
+			"positive": 0.4,
+			"negative": 0.4,
+			"neutral": 0.2
+		}
+	},
+
+	"recipes": {
+		"max_ingredients": 15,
+		"unlockable_recipes_count": 9,
+		"secret_recipes_count": 2
+	},
+
+	"difficulty": {
+		"levels": {
+			"easy": {
+				"customer_frequency": 1.0,
+				"order_complexity": 0.7,
+				"profit": 1.0,
+				"event_frequency": 0.8
+			},
+			"normal": {
+				"customer_frequency": 1.3,
+				"order_complexity": 1.0,
+				"profit": 0.9,
+				"event_frequency": 1.3
+			},
+			"hard": {
+				"customer_frequency": 1.7,
+				"order_complexity": 1.6,
+				"profit": 0.7,
+				"event_frequency": 1.6
+			},
+			"ultimate": {
+				"customer_frequency": 2.2,
+				"order_complexity": 2.0,
+				"profit": 0.6,
+				"event_frequency": 1.9
+			},
+			"nightmare": {
+				"customer_frequency": 4.2,
+				"order_complexity": 3.7,
+				"profit": 0.5,
+				"event_frequency": 3.0
+			}
+		}
+	},
+
+	"achievements": {
+		"enabled": true,
+		"list": [
+			"prima_vendita!",
+			"masto_paninaro!",
+			"è perfetto!",
+			"comm si veloce!",
+			"attiraclienti!",
+			"siamo_una_squadra!"
+		]
+	}
+}
