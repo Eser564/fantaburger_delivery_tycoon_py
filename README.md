@@ -74,7 +74,7 @@ cd fantaburger-tycoon
 python --version
 # Dovrebbe mostrare Python 3.8 o superiore
 
-# Verifica la struttura del progetto
+# Verifica la struttura del progetto (in linux)
 ls -la
 # Dovresti vedere: main.py, gui.py, cartelle modules/ e data/
 ```
