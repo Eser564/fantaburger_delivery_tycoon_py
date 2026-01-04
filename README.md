@@ -57,7 +57,7 @@ Ogni errore ti costerà, ma ogni ordine completato ti farà guadagnare soldi per
 ### **Metodo 1: Download Diretto**
 ```bash
 # Clona il repository
-git clone https://github.com/tuo-username/fantaburger-tycoon.git
+git clone https://github.com/Eser564/fantaburger_delivery_tycoon_py.git
 
 # Entra nella cartella
 cd fantaburger-tycoon
