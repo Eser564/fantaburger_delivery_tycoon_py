@@ -1,0 +1,6 @@
+## Requisiti
+
+- Python 3.8 o superiore.
+- Il modulo Tkinter (di solito incluso con Python, ma su alcune distribuzioni Linux potrebbe essere necessario installarlo separatamente).
+
+Non sono necessarie altre dipendenze.
