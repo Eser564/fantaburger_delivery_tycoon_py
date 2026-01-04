@@ -1,0 +1,261 @@
+{
+    "ingredients": {
+        "hamburger": {
+            "hamburger_manzo": {
+                "display_name": "Hamburger di manzo di scottona",
+                "description": "Carne di qualità premium",
+                "base_quantity": 20,
+                "current_quantity": 20,
+                "unit": "pezzo",
+                "base_cost": 1.2,
+                "current_cost": 1.2,
+                "reorder_point": 5,
+                "restock_quantity": 15,
+                "category": "carne",
+                "critical": true
+            },
+            "hamburger_salsiccia": {
+                "display_name": "Hamburger di salsiccia di maialino nero",
+                "description": "Salsiccia di qualità premium",
+                "base_quantity": 20,
+                "current_quantity": 20,
+                "unit": "pezzo",
+                "base_cost": 1.5,
+                "current_cost": 1.5,
+                "reorder_point": 5,
+                "restock_quantity": 15,
+                "category": "carne",
+                "critical": true
+            },
+            "hamburger_pollo": {
+                "display_name": "Hamburger di cotoletta impanata",
+                "description": "Cotoletta di pollo con panatura croccante di qualità premium",
+                "base_quantity": 20,
+                "current_quantity": 20,
+                "unit": "pezzo",
+                "base_cost": 1.3,
+                "current_cost": 1.3,
+                "reorder_point": 5,
+                "restock_quantity": 15,
+                "category": "carne",
+                "critical": true
+            },
+            "hamburger_kebab": {
+                "display_name": "Hamburger di kebab",
+                "description": "Kebab di qualità premium",
+                "base_quantity": 20,
+                "current_quantity": 20,
+                "unit": "pezzo",
+                "base_cost": 1.7,
+                "current_cost": 1.7,
+                "reorder_point": 5,
+                "restock_quantity": 15,
+                "category": "carne",
+                "critical": true
+            },
+            "hamburger_vegano": {
+                "display_name": "Hamburger di soia",
+                "description": "Hamburger adatto a chi è vegano",
+                "base_quantity": 20,
+                "current_quantity": 20,
+                "unit": "pezzo",
+                "base_cost": 1.7,
+                "current_cost": 1.7,
+                "reorder_point": 5,
+                "restock_quantity": 15,
+                "category": "carne",
+                "critical": true
+            }
+        },
+        "topping": {
+            "bacon": {
+                "display_name": "Bacon Croccante",
+                "description": "Fette di pancetta affumicata",
+                "base_quantity": 8,
+                "current_quantity": 8,
+                "unit": "fetta",
+                "base_cost": 0.7,
+                "current_cost": 0.7,
+                "reorder_point": 2,
+                "restock_quantity": 10,
+                "category": "guarnizione",
+                "critical": true
+            },
+            "lettuce": {
+                "display_name": "Lattuga Iceberg",
+                "description": "Foglie croccanti di lattuga",
+                "base_quantity": 10,
+                "current_quantity": 10,
+                "unit": "foglia",
+                "base_cost": 0.2,
+                "current_cost": 0.2,
+                "reorder_point": 2,
+                "restock_quantity": 8,
+                "category": "verdura",
+                "critical": true
+            },
+            "tomato": {
+                "display_name": "Pomodoro Fresco",
+                "description": "Fette di pomodoro maturo",
+                "base_quantity": 10,
+                "current_quantity": 10,
+                "unit": "fetta",
+                "base_cost": 0.2,
+                "current_cost": 0.2,
+                "reorder_point": 2,
+                "restock_quantity": 8,
+                "category": "verdura",
+                "critical": true
+            },
+            "onion": {
+                "display_name": "Cipolla",
+                "description": "Cipolla di alta qualità",
+                "base_quantity": 10,
+                "current_quantity": 10,
+                "unit": "pezzo",
+                "base_cost": 0.2,
+                "current_cost": 0.2,
+                "reorder_point": 2,
+                "restock_quantity": 8,
+                "category": "verdura",
+                "critical": true
+            },
+            "cheese": {
+                "display_name": "Formaggio Cheddar",
+                "description": "Formaggio fuso di alta qualità",
+                "base_quantity": 10,
+                "current_quantity": 10,
+                "unit": "pezzo",
+                "base_cost": 1.0,
+                "current_cost": 1.0,
+                "reorder_point": 5,
+                "restock_quantity": 15,
+                "category": "formaggio",
+                "critical": true
+            }
+        },
+        "bread": {
+            "bun": {
+                "display_name": "Panino al sesamo",
+                "description": "Panino soffice con semi di sesamo",
+                "base_quantity": 30,
+                "current_quantity": 30,
+                "unit": "pezzo",
+                "base_cost": 0.5,
+                "current_cost": 0.5,
+                "reorder_point": 10,
+                "restock_quantity": 20,
+                "category": "pane",
+                "critical": true
+            },
+            "potato_bun": {
+                "display_name": "Panino realizzato con patate",
+                "description": "Panino soffice con semi di sesamo",
+                "base_quantity": 30,
+                "current_quantity": 30,
+                "unit": "pezzo",
+                "base_cost": 0.5,
+                "current_cost": 0.5,
+                "reorder_point": 10,
+                "restock_quantity": 20,
+                "category": "pane",
+                "critical": true
+            }
+        },
+        "sauces": {
+            "ketchup": {
+                "display_name": "Ketchup",
+                "description": "Salsa al pomodoro dolce",
+                "base_quantity": 50,
+                "current_quantity": 50,
+                "unit": "porzione",
+                "base_cost": 0.1,
+                "current_cost": 0.1,
+                "reorder_point": 3,
+                "restock_quantity": 30,
+                "category": "salsa",
+                "critical": false
+            },
+            "mayo": {
+                "display_name": "Maionese",
+                "description": "Salsa cremosa a base di uova",
+                "base_quantity": 50,
+                "current_quantity": 50,
+                "unit": "porzione",
+                "base_cost": 0.1,
+                "current_cost": 0.1,
+                "reorder_point": 3,
+                "restock_quantity": 30,
+                "category": "salsa",
+                "critical": false
+            },
+            "crispy": {
+                "display_name": "Crispy",
+                "description": "Salsa cremosa e leggermente piccante, ispirata ai burger più famosi",
+                "base_quantity": 50,
+                "current_quantity": 50,
+                "unit": "porzione",
+                "base_cost": 0.1,
+                "current_cost": 0.1,
+                "reorder_point": 3,
+                "restock_quantity": 30,
+                "category": "salsa",
+                "critical": false
+            },
+            "motor": {
+                "display_name": "Motor",
+                "description": "Salsa segreta e speciale",
+                "base_quantity": 50,
+                "current_quantity": 50,
+                "unit": "porzione",
+                "base_cost": 0.1,
+                "current_cost": 0.1,
+                "reorder_point": 3,
+                "restock_quantity": 30,
+                "category": "salsa",
+                "critical": false
+            },
+            "hannibal": {
+                "display_name": "Hannibal",
+                "description": "Salsa cremosa per i veri amanti del piccante",
+                "base_quantity": 50,
+                "current_quantity": 50,
+                "unit": "porzione",
+                "base_cost": 0.1,
+                "current_cost": 0.1,
+                "reorder_point": 3,
+                "restock_quantity": 30,
+                "category": "salsa",
+                "critical": false
+            }
+        },
+        "secret": {
+            "pasta_patate_provola": {
+                "display_name": "Pasta & Patate Con Provola",
+                "description": "Pasta corta mista con patate e provola",
+                "base_quantity": 10,
+                "current_quantity": 10,
+                "unit": "porzione",
+                "base_cost": 2.5,
+                "current_cost": 2.5,
+                "reorder_point": 3,
+                "restock_quantity": 8,
+                "category": "secret",
+                "critical": false
+            },
+            "mac_n_cheese": {
+                "display_name": "Mac&Cheese",
+                "description": "Maccheroni con formaggio come quelli americani!",
+                "base_quantity": 10,
+                "current_quantity": 10,
+                "unit": "porzione",
+                "base_cost": 2.5,
+                "current_cost": 2.5,
+                "reorder_point": 3,
+                "restock_quantity": 8,
+                "category": "secret",
+                "critical": false
+            }
+        }
+    }
+}

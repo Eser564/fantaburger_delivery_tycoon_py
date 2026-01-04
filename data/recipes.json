@@ -1,0 +1,121 @@
+{
+	"perfetto": {
+		"name": "Perfetto",
+		"price": 6.0,
+		"ingredients": {
+			"hamburger.hamburger_manzo": 1,
+			"topping.cheese": 1,
+			"topping.lettuce": 1,
+			"topping.onion": 1,
+			"topping.tomato": 1,
+			"bread.bun": 1,
+			"sauces.ketchup": 1
+		}
+	},
+	"rispetto": {
+		"name": "Nu Poc & Rispetto",
+		"price": 7.5,
+		"ingredients": {
+			"hamburger.hamburger_pollo": 1,
+			"topping.cheese": 1,
+			"topping.lettuce": 1,
+			"topping.onion": 1,
+			"topping.tomato": 1,
+			"bread.potato_bun": 1,
+			"sauces.motor": 1
+		}
+	},
+	"mamma_mi": {
+		"name": "U Mamma Mi",
+		"price": 6.5,
+		"ingredients": {
+			"hamburger.hamburger_kebab": 1,
+			"topping.cheese": 1,
+			"topping.lettuce": 1,
+			"topping.onion": 1,
+			"topping.bacon": 1,
+			"bread.bun": 1,
+			"sauces.hannibal": 1
+		}
+	},
+	"bigtotore": {
+		"name": "Gran BigTotore XXL",
+		"price": 11.0,
+		"ingredients": {
+			"hamburger.hamburger_manzo": 2,
+			"topping.bacon": 2,
+			"topping.lettuce": 1,
+			"topping.onion": 1,
+			"topping.tomato": 1,
+			"bread.potato_bun": 1,
+			"sauces.mayo": 2,
+			"sauces.ketchup": 2,
+			"secret.mac_n_cheese": 2
+		}
+	},
+	"burgtiello": {
+		"name": "Burgtiello",
+		"price": 5.5,
+		"ingredients": {
+			"hamburger.hamburger_salsiccia": 1,
+			"topping.cheese": 1,
+			"topping.onion": 1,
+			"bread.bun": 1,
+			"sauces.hannibal": 1
+		}
+	},
+	"cheestelli": {
+		"name": "Cheesetelli",
+		"price": 6.29,
+		"ingredients": {
+			"hamburger.hamburger_pollo": 1,
+			"topping.cheese": 2,
+			"topping.lettuce": 1,
+			"topping.tomato": 1,
+			"bread.bun": 1,
+			"sauces.motor": 1
+		}
+	},
+	"burgernatti": {
+		"name": "Burgernatti XXL",
+		"price": 12.0,
+		"ingredients": {
+			"hamburger.hamburger_salsiccia": 2,
+			"topping.cheese": 1,
+			"topping.lettuce": 1,
+			"topping.onion": 2,
+			"topping.tomato": 2,
+			"bread.bun": 1,
+			"sauces.ketchup": 1,
+			"sauces.hannibal": 1,
+			"secret.pasta_patate_provola": 2
+		}
+	},
+	"forza_napoli": {
+		"name": "Forza Napoli",
+		"price": 10.0,
+		"ingredients": {
+			"hamburger.hamburger_salsiccia": 1,
+			"hamburger.hamburger_manzo": 1,
+			"topping.cheese": 1,
+			"topping.lettuce": 1,
+			"topping.onion": 2,
+			"topping.tomato": 2,
+			"bread.potato_bun": 1,
+			"sauces.ketchup": 1,
+			"sauces.hannibal": 1,
+			"sauces.mayo": 1
+		}
+	},
+	"nun_se_fa_accussi": {
+		"name": "Nun se fa accussi",
+		"price": 5.0,
+		"ingredients": {
+			"hamburger.hamburger_vegano": 1,
+			"topping.lettuce": 1,
+			"topping.tomato": 1,
+			"bread.potato_bun": 1,
+			"sauces.ketchup": 1
+		}
+	}
+}
