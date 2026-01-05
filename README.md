@@ -128,7 +128,7 @@ fanta_burger/
 │   ├── recipes.json   # Ricette disponibili 
 │   ├── ingredients.json # Ingredienti con costi/scorte
 │   └── savestate.json  # File di salvataggio  (generato)
-│
+├── requirements.txt # Requisiti (Python 3.8 o superiore)
 └── README.md          # Questa documentazione
 ```
 
