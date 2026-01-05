@@ -9,7 +9,7 @@ Optional corrisponde ad un  valore che può essere None
 Tuple corrisponde ad una tupla 
 List corrisponde ad una lista
 '''
-from datetime import datetime
+from datetime import datetime #classe datetime importata dal modulo datetime usata per salvare timestamp
 '''
 Importa la classe datetime dal modulo datetime che è usata per generare timestamp (salvataggi, scadenze tasse, costi giornalieri), 
 '''
