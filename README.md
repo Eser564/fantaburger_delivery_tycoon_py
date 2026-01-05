@@ -30,6 +30,7 @@ Diventa il proprietario di una paninoteca super creativa dove ogni panino ha ing
 - Tenere sotto controllo il bilancio per evitare il fallimento
 - Gestire eventi casuali (sconti, furti, boom ordini)
 Ogni errore ti costerà, ma ogni ordine completato ti farà guadagnare soldi per rifornire il negozio e acquistare upgrade!
+
 Become the owner of a super creative sandwich shop where every sandwich features exclusive ingredients! Demand is growing rapidly, and you must:
 - Manage ingredient inventory via JSON files
 - Forecast daily needs
@@ -64,7 +65,7 @@ Every mistake will cost you, but every completed order will earn you money to re
 - **Reputation System**: Affects customer attendance
 - **Achievement System**: 6 unlockable achievements
 - **Upgrade System**: Upgrade your kitchen, hire employees, unlock recipes
-- 
+  
 ## ⚙️ Requisiti Tecnici/Technical Requirements
 
 ### **Minimi**
@@ -92,6 +93,7 @@ cd fantaburger-tycoon
 1. Scarica l'archivio ZIP del progetto
 2. Estrai i file in una cartella di tua scelta
 3. Assicurati che la struttura delle cartelle sia preservata
+###**Steps:**
 1. Download the project ZIP archive
 2. Extract the files to a folder of your choice
 3. Make sure the folder structure is preserved
@@ -161,7 +163,9 @@ python gui.py
 # - Buttons for all
 ```
 
+
 ## 📁 Struttura del Progetto/Project Structure
+
 
 fanta_burger/
 │
@@ -182,6 +186,8 @@ fanta_burger/
 │   └── savestate.json  # File di salvataggio  (generato)/ Savestate file (generated)
 ├── requirements.txt # Requisiti (Python 3.8 o superiore)/ Requirements (Python 3.8 or higher)
 └── README.md          # Questa documentazione/This documentation
+
+
 
 ## 🖥️ Utilizzo dell'IA/Use of Artificial Intelligence
 Durante lo sviluppo di FantaBurger Delivery Tycoon, l'intelligenza artificiale è stata utilizzata esclusivamente come strumento di supporto per l'apprendimento e assistente di programmazione, mai come sostituzione del lavoro creativo e progettuale del team.
@@ -210,6 +216,7 @@ Principi Guida Adottati:
 
 Strumenti Utilizzati:
 Grok: https://grok.com/
+
 During the development of FantaBurger Delivery Tycoon, artificial intelligence was used exclusively as a learning support tool and programming assistant, never as a replacement for the team's creative and design work.
 
 Areas of Application:
@@ -238,12 +245,12 @@ Tools Used:
 Grok: https://grok.com/
 
 
-```
 
 ## 👥 Crediti/Credits
 
 ### **Sviluppatori**/**Developers**
 - **I Meccanici Trappolai**: Salvatore Renatti, Salvatore Apuzzo, Francesco Nastelli e Cristian Vitiello
+- 
 Ci siamo incontrati fisicamente a casa dEL CAPOGRUPPO il 21 e il 22 dicembre 2025, lavorando ogni volta dalle 15:30 alle 17:30. 
 Queste sessioni sono state dedicate alla realizzazione dei file config.json, ingredients.json, recipes.json e del modulo inventory.py.
 Oltre a ciò, abbiamo integrato questi incontri con cinque sessioni online svolte tramite Google Meet dal 27 al 30 dicembre, sempre tra le 15:30 e le 17:30, durante le quali sono stati implementati i restanti moduli.
