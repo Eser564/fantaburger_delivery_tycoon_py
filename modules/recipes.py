@@ -208,7 +208,7 @@ class Recipe:
                 'lettuce': 0.3,
                 'tomato': 0.4,
                 'sauce': 0.1,
-                'secret': 5.0  # 
+                'secret': 5.0  
             }
             for ingredient_path, needed_quantity in ingredients.items():
                 base_cost = 0.1
@@ -256,7 +256,6 @@ class Recipe:
                 current = self.inventory.get_ingredient_quantity(path)
                 if current < qty:
                     return False, f'Ingredienti insufficienti per {path}', {}
-                # Consuma direttamente senza lock
                 self.inventory.data["ingredients"][path.split('.')[0]][path.split('.')[1]]['current_quantity'] -= qty
         except Exception as e:
             return False, f"Errore consumo: {e}", {}
