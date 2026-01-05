@@ -239,45 +239,47 @@ class Inventory:
         e ha tipo di ritorno Tuple[bool, str, float].
         Esegue il rifornimento automatico degli ingredienti con scorte basse rispettando un budget. 
         In particolare, ottiene la lista di ingredienti sotto soglia con get_low_stock_items. 
-        Dopodichè, ottenuti già ordinati per criticità e quantità residua li ordina per quantità ascendente e, entro il budget, rifornisce la quantità necessaria (o restock_quantity). 
+        Dopodichè, entro il budget, rifornisce la quantità necessaria. 
         Accumula costi e nomi riforniti e restituisce True/False, messaggio dettagliato e costo totale speso.
         '''
         low_items = self.get_low_stock_items()
         if not low_items:
             return True, "Nessun ingrediente da rifornire", 0.0
-    
+
         total_cost = 0.0
-        restocked_items = []
-    
+        restocked = []
+
         for item in low_items:
             if total_cost >= budget:
                 break
-        
-            ingredient = self.get_ingredient(item['path'])
+
+            ingredient = self.get_ingredient(item["path"])
             if not ingredient:
                 continue
-            
-            needed_quantity = max(item['reorder_point'] - item['current_quantity'], 0)
-            if needed_quantity <= 0:
+
+            needed = max(item["reorder_point"] - ingredient["current_quantity"], 0)
+            if needed <= 0:
                 continue
-            
-            restock_quantity = ingredient.get('restock_quantity', needed_quantity)
-            quantity_order = min(needed_quantity, restock_quantity)
-        
-            item_cost = ingredient.get('current_cost', 0) * quantity_order
-        
-            if total_cost + item_cost <= budget:
-                success = self.add_ingredient(item['path'], quantity_order)
-                if success:
-                    cost = ingredient.get('current_cost', 0) * quantity_order
-                    total_cost += cost
-                    restocked_items.append(item['name'])
-    
-        if restocked_items:
-            message = f"Riforniti: {', '.join(restocked_items)}\nCosto totale: {total_cost:.2f}€"
-            return True, message, round(total_cost, 2)
-        else:
-            return False, "Nessun riordine possibile con il budget disponibile", 0.0
+
+            unit_cost = ingredient.get("current_cost", 0.0)
+            max_affordable = int((budget - total_cost) // unit_cost)
+
+            qty = min(needed, max_affordable)
+            if qty <= 0:
+                continue
+
+            ingredient["current_quantity"] += qty
+
+            cost = unit_cost * qty
+            total_cost += cost
+            restocked.append(item["name"])
+
+        if restocked:
+            msg = f"Riforniti: {', '.join(restocked)} | Spesa: €{total_cost:.2f}"
+            return True, msg, round(total_cost, 2)
+
+        return False, "Nessun riordine possibile con il budget disponibile", 0.0
+
             
     def get_low_stock_items(self) -> List[Dict]:
         '''
