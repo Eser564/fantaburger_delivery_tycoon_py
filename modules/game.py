@@ -918,9 +918,6 @@ class GameEngine:
             return
 
         if self.current_hour > self.working_end:
-            print(f"\n{'='*60}")
-            print("🕒 FINE GIORNATA DI LAVORO".center(60))
-            print(f"{'='*60}")
             self.end_day()
             return
  
@@ -1017,9 +1014,7 @@ class GameEngine:
             self.orders_preparing.clear()
             self.current_preparation_count = 0
             self.hours_since_last_event = 0
-            
-            print(f"\n🔄 Reset completato: Giorno {self.current_game_day}, Ora {self.current_hour:02d}:00")
-            
+                        
             print(f"\n{'🔔'*20}")
             print(f"📅 GIORNO {self.current_game_day} INIZIATO!".center(60))
             print(f"{'🔔'*20}")
@@ -1173,7 +1168,6 @@ class GameEngine:
                 print(f"❌ Fondi insufficienti (€{total_cost:.2f})")
                 continue
 
-            # 🔥 ACQUISTO CLI-SAFE (NO add_ingredient, NO lock)
             category, name = item["path"].split(".")
             self.inventory.data["ingredients"][category][name]["current_quantity"] += qty
             self.finance.subtract_money(total_cost, f"Acquisto {item['display']} x{qty}")
