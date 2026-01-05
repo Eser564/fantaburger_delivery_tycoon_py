@@ -370,7 +370,7 @@ class GameEngine:
 
                 if event_name in ["lucky_day", "food_critic", "rush_hour"]:
                     cat = "positive"
-                elif event_name in ["broken_equipment", "health_inspection", "weather_bad", "employee_sick"]:
+                elif event_name in ["broken_equipment", "health_inspection", "weather_bad", "employee_sick", "theft"]:
                     cat = "negative"
                 else:
                     cat = "neutral"
@@ -441,13 +441,13 @@ class GameEngine:
             bonus = random.uniform(150, 400)
             self.finance.add_money(bonus, "Recensione stellata")
             self.reputation = min(100, self.reputation + 15)
-            print(f"   🎩 Critico gastronomico! +€{bonus:.2f} | +15 reputazione")
+            print(f"   🎩 Critico gastronomico del Gambero Rosso! +€{bonus:.2f} | +15 reputazione")
 
         elif event_name == "health_inspection":
             penalty = random.uniform(100, 350)
             self.finance.subtract_money(penalty, "Multa sanitaria")
             self.reputation = max(0, self.reputation - 15)
-            print(f"   🚨 Ispezione sanitaria! -€{penalty:.2f} | -15 reputazione")
+            print(f"   🚨 Ispezione sanitaria da parte dei NAS! -€{penalty:.2f} | -15 reputazione")
 
         elif event_name == "employee_sick":
             print("   🤒 Dipendente malato! -50% capacità cucina per 3 ore")
@@ -1099,103 +1099,86 @@ class GameEngine:
         In particolare, mostra saldo, lista ingredienti con stock e costo, permette acquisto con formato "numero quantità",
         supporta comando "auto" per rifornimento automatico e "esci" per uscire.
         '''
-        print("\n" + "="*60)
+        print("\n" + "=" * 60)
         print("🛒 SHOP INGREDIENTI".center(60))
-        print("="*60)
-        
-        balance = self.finance.get_balance()
-        print(f"💰 Saldo: €{balance:.2f}")
-        print("-" * 60)
-        
-        all_items = []
-        categories = ["hamburger", "topping", "bread", "sauces", "secret"]
-        
-        for category in categories:
-            if category not in self.inventory.data.get("ingredients", {}):
-                continue
-                
-            for name, data in self.inventory.data["ingredients"][category].items():
-                if not isinstance(data, dict):
-                    continue
-                    
-                display = data.get("display_name", name.replace("_", " ").title())
-                cost = data.get("current_cost", data.get("base_cost", 0.0))
-                qty = data.get("current_quantity", 0)
-                
-                all_items.append({
-                    "path": f"{category}.{name}",
-                    "display": display,
-                    "cost": cost,
-                    "qty": qty,
-                    "category": category
-                })
-        
-        print("\nINGREDIENTI DISPONIBILI:")
-        print("-" * 60)
-        
-        for i, item in enumerate(all_items, 1):
-            status = "🔴" if item["qty"] <= 0 else "🟡" if item["qty"] <= 5 else "🟢"
-            print(f"{i:3d}. {status} {item['display']:<25} €{item['cost']:5.2f}  (Stock: {item['qty']})")
-        
-        print("\n" + "="*60)
-        print("COME ACQUISTARE:")
-        print("  Scrivi: 'numero quantità'")
-        print("  Esempio: '5 10' per acquistare 10 unità dell'ingrediente 5")
-        print("  Comandi: 'auto'=rifornimento, 'esci'=uscita")
-        print("="*60)
-        
-        while True:
-            try:
-                cmd = input("\nAcquista > ").strip().lower()
-                
-                if cmd == "esci":
-                    print("Uscita dallo shop...")
-                    break
-                    
-                elif cmd == "auto":
-                    budget = min(200, balance)
-                    print(f"Rifornimento automatico (budget €{budget:.2f})...")
-                    success, msg, cost = self.inventory.auto_restock_low_items(budget)
-                    if success:
-                        ok, msg_fin = self.finance.subtract_money(cost, "Rifornimento auto")
-                        if ok:
-                            print(f"✅ {msg}")
-                            balance = self.finance.get_balance()
-                            print(f"💰 Nuovo saldo: €{balance:.2f}")
-                    continue
-                    
-                parts = cmd.split()
-                if len(parts) == 2 and parts[0].isdigit() and parts[1].isdigit():
-                    num = int(parts[0])
-                    qty = int(parts[1])
-                    
-                    if 1 <= num <= len(all_items):
-                        item = all_items[num-1]
-                        total_cost = item["cost"] * qty
-                        
-                        if balance >= total_cost:
-                            ok, msg = self.purchase_ingredient(item["path"], qty)
-                            if ok:
-                                print(f"✅ {msg}")
-                                balance = self.finance.get_balance()
-                                print(f"💰 Nuovo saldo: €{balance:.2f}")
-                                
+        print("=" * 60)
 
-                                item["qty"] += qty
-                            else:
-                                print(f"❌ {msg}")
-                        else:
-                            print(f"❌ Fondi insufficienti! Necessari: €{total_cost:.2f}")
-                    else:
-                        print(f"❌ Numero non valido. Range: 1-{len(all_items)}")
-                else:
-                    print("❌ Formato: 'numero quantità' o 'auto' o 'esci'")
-                    
-            except KeyboardInterrupt:
-                print("\n🛑 Operazione annullata")
+        def build_items():
+            items = []
+            categories = ["hamburger", "topping", "bread", "sauces", "secret"]
+
+            for category in categories:
+                for name, data in self.inventory.data.get("ingredients", {}).get(category, {}).items():
+                    if not isinstance(data, dict):
+                        continue
+
+                    items.append({
+                        "path": f"{category}.{name}",
+                        "display": data.get("display_name", name.replace("_", " ").title()),
+                        "cost": data.get("current_cost", data.get("base_cost", 0.0)),
+                        "qty": data.get("current_quantity", 0)
+                    })
+            return items
+
+        while True:
+            balance = self.finance.get_balance()
+            all_items = build_items()
+
+            print(f"\n💰 Saldo: €{balance:.2f}")
+            print("-" * 60)
+
+            for i, item in enumerate(all_items, 1):
+                status = "🔴" if item["qty"] <= 0 else "🟡" if item["qty"] <= 5 else "🟢"
+                print(f"{i:3d}. {status} {item['display']:<25} €{item['cost']:5.2f}  (Stock: {item['qty']})")
+
+            print("\nComandi:")
+            print("  numero quantità   → acquista")
+            print("  auto              → rifornimento automatico")
+            print("  esci              → torna al gioco")
+
+            cmd = input("\nAcquista > ").strip().lower()
+
+            if cmd == "esci":
+                print("Uscita dallo shop.")
                 break
-            except Exception as e:
-                print(f"❌ Errore: {e}")
+
+            if cmd == "auto":
+                budget = min(200, balance)
+                success, msg, cost = self.inventory.auto_restock_low_items(budget)
+                if success:
+                    self.finance.subtract_money(cost, "Rifornimento automatico")
+                    print(f"✅ {msg}")
+                continue
+
+            parts = cmd.split()
+            if len(parts) != 2 or not parts[0].isdigit() or not parts[1].isdigit():
+                print("❌ Formato non valido. Usa: numero quantità")
+                continue
+
+            index = int(parts[0]) - 1
+            qty = int(parts[1])
+
+            if qty <= 0:
+                print("❌ La quantità deve essere > 0")
+                continue
+
+            if index < 0 or index >= len(all_items):
+                print("❌ Numero ingrediente non valido")
+                continue
+
+            item = all_items[index]
+            total_cost = item["cost"] * qty
+
+            if balance < total_cost:
+                print(f"❌ Fondi insufficienti (€{total_cost:.2f})")
+                continue
+
+            # 🔥 ACQUISTO CLI-SAFE (NO add_ingredient, NO lock)
+            category, name = item["path"].split(".")
+            self.inventory.data["ingredients"][category][name]["current_quantity"] += qty
+            self.finance.subtract_money(total_cost, f"Acquisto {item['display']} x{qty}")
+
+            print(f"✅ Acquistati {qty} x {item['display']} per €{total_cost:.2f}")
                     
     def force_reset_ending_day(self):
         '''
@@ -1260,7 +1243,7 @@ class GameEngine:
         self.running = True
 
         self.show_help()
-        print("\n🎯 Gestisci il ristorante per 30 giorni!")
+        print("\n🎯 Gestisci il ristorante per 7 giorni!")
         print("\nPremi INVIO per iniziare...")
 
         while self.running and not self.game_over:
