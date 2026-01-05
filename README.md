@@ -85,7 +85,7 @@ Every mistake will cost you, but every completed order will earn you money to re
 # Clona il repository/Clone the repository
 git clone https://github.com/Eser564/fantaburger_delivery_tycoon_py.git
 
-# Entra nella cartella/Enter the folder
+# Entra nella cartella/Change Current Directory
 cd fantaburger-tycoon
 ```
 
@@ -93,10 +93,10 @@ cd fantaburger-tycoon
 1. Scarica l'archivio ZIP del progetto
 2. Estrai i file in una cartella di tua scelta
 3. Assicurati che la struttura delle cartelle sia preservata
-###**Steps:**
-1. Download the project ZIP archive
-2. Extract the files to a folder of your choice
-3. Make sure the folder structure is preserved
+### **Steps:**
+ 1. Download the project ZIP archive
+ 2. Extract the files to a folder of your choice
+ 3. Make sure the folder structure is preserved
 
 ### **Verifica Installazione**/ **Verify Installation**
 ```bash
@@ -166,7 +166,7 @@ python gui.py
 
 ## 📁 Struttura del Progetto/Project Structure
 
-
+```
 fanta_burger/
 │
 ├── main.py              # Punto di ingresso per versione CLI/Entry point for CLI Version
@@ -186,6 +186,7 @@ fanta_burger/
 │   └── savestate.json  # File di salvataggio  (generato)/ Savestate file (generated)
 ├── requirements.txt # Requisiti (Python 3.8 o superiore)/ Requirements (Python 3.8 or higher)
 └── README.md          # Questa documentazione/This documentation
+```
 
 
 
@@ -250,7 +251,7 @@ Grok: https://grok.com/
 
 ### **Sviluppatori**/**Developers**
 - **I Meccanici Trappolai**: Salvatore Renatti, Salvatore Apuzzo, Francesco Nastelli e Cristian Vitiello
-- 
+
 Ci siamo incontrati fisicamente a casa dEL CAPOGRUPPO il 21 e il 22 dicembre 2025, lavorando ogni volta dalle 15:30 alle 17:30. 
 Queste sessioni sono state dedicate alla realizzazione dei file config.json, ingredients.json, recipes.json e del modulo inventory.py.
 Oltre a ciò, abbiamo integrato questi incontri con cinque sessioni online svolte tramite Google Meet dal 27 al 30 dicembre, sempre tra le 15:30 e le 17:30, durante le quali sono stati implementati i restanti moduli.
