@@ -489,17 +489,62 @@ class FantaBurgerGUI:
         '''
         Funzione privata che come parametro riceve il percorso (str), la quantità (int) e win (Toplevel) oltre all'istanza della classe FantaBurgerGUI (self implicito).
         Gestisce l'acquisto di un ingrediente nello shop.
-        In particolare, chiama purchase_ingredient() del GameEngine, mostra messaggio successo/errore,
-        chiude e riapre lo shop in caso di acquisto riuscito.
+        In particolare, verifica che la quantità sia positiva e che path sia nel formato corretto "categoria.ingrediente",
+        controlla l'esistenza dell'ingrediente nella struttura inventory.data, calcola il costo totale,
+        verifica fondi sufficienti nel bilancio (finance.get_balance()), aggiorna direttamente la quantità corrente
+        nell'inventario, sottrae il denaro con finance.subtract_money(), mostra messaggio di successo con nuovo stock e spesa,
+        salva lo stato di gioco con safe_save(), stampa conferma nel log e chiude la finestra shop per riaprirla aggiornata.
+        In caso di errore (quantità non valida, percorso invalido, ingrediente non trovato, fondi insufficienti o eccezione generica)
+        mostra messagebox di errore appropriato e interrompe l'operazione senza modificare lo stato.
         '''
-        ok, msg = self.game.purchase_ingredient(path, qty)
-        if ok:
-            print(f"🛒 {msg}")
-            messagebox.showinfo("Acquisto", msg)
+        if qty <= 0:
+            messagebox.showerror("Errore", "Quantità non valida")
+            return
+
+        try:
+            parts = path.split('.')
+            if len(parts) != 2:
+                messagebox.showerror("Errore", "Percorso ingrediente non valido")
+                return
+                
+            category, name = parts
+            
+            if (category not in self.game.inventory.data["ingredients"] or 
+                name not in self.game.inventory.data["ingredients"][category]):
+                messagebox.showerror("Errore", "Ingrediente non trovato")
+                return
+            
+            ingredient = self.game.inventory.data["ingredients"][category][name]
+            cost = ingredient.get("current_cost", ingredient.get("base_cost", 0.0))
+            total_cost = cost * qty
+
+            balance = self.game.finance.get_balance()
+            if balance < total_cost:
+                messagebox.showerror(
+                    "Fondi insufficienti",
+                    f"Necessari: €{total_cost:.2f}\nDisponibili: €{balance:.2f}"
+                )
+                return
+
+            current_qty = ingredient.get("current_quantity", 0)
+            ingredient["current_quantity"] = current_qty + qty
+            
+            self.game.finance.subtract_money(total_cost, f"Acquisto {path}")
+
+            messagebox.showinfo(
+                "Acquisto riuscito",
+                f"Acquistati {qty}x {name}\nNuovo stock: {ingredient['current_quantity']}\nSpesa: €{total_cost:.2f}"
+            )
+
+            self.game.safe_save()
+
+            print(f"✅ Acquistati {qty}x {name}. Nuova quantità: {ingredient['current_quantity']}")
+
             win.destroy()
-            self.show_shop()
-        else:
-            messagebox.showerror("Errore", msg)
+            self.show_shop() 
+            
+        except Exception as e:
+            messagebox.showerror("Errore", f"Errore durante l'acquisto: {str(e)}")
 
 
     def show_upgrades(self):
