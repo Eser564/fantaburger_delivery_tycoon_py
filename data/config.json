@@ -23,7 +23,7 @@
 		"unlock": {
 			"new_recipe": 100.0,
 			"new_employee": 50.0,
-			"upgrade_kitchen": 1000.0
+			"upgrade_kitchen": 100.0
 		}
 	},
 
