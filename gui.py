@@ -718,9 +718,9 @@ class FantaBurgerGUI:
             self.game.kitchen_capacity += self.game.upgrade_counts.get("new_employee", 0)
             
             if upgrade_id == "upgrade_kitchen" and self.game.upgrade_counts[upgrade_id] >= 3:
-                self.game.check_achievement("kitchen_pro!")
+                self.game.check_achievement("non_è_la_centralina!")
             elif upgrade_id == "new_employee" and self.game.upgrade_counts[upgrade_id] >= 2:
-                self.game.check_achievement("small_team!")
+                self.game.check_achievement("piccola_squadra!")
             
             messagebox.showinfo("Successo!", 
                             f"✅ {upgrade['desc']} ACQUISTATO!\n"
