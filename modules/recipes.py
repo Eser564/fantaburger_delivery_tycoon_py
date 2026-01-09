@@ -349,6 +349,12 @@ class Recipe:
         return sorted(profitable, key=lambda x: x['profit_margin_percent'], reverse=True)
 
     def is_producible(self, recipe_id: str) -> bool:
+        '''
+        Come parametri possiede esplicitamente l'id della ricetta (stringa) e implicamente l'istanza della classe e ha tipo di ritorno bool.
+        Si occupa di controllare se una ricetta è producibile o meno,
+        in particolare restituisce False se non ha ottenuto nulla da get_recipe oppure se la quantità corrente è minore di quella necessaria,
+        in caso contrario restituisce True.
+        '''
         recipe = self.get_recipe(recipe_id)
         if not recipe:
             return False
