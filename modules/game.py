@@ -216,7 +216,7 @@ class GameEngine:
             self.restaurant_name = state.get("restaurant_name", "FantaBurger")
             self.difficulty = state.get("difficulty", "easy")
             self.current_game_day = state.get("current_game_day", 1)
-            self.reputation = state.get("reputation", 100.0)
+            self.reputation = state.get("reputation", 50.0)
             self.kitchen_capacity = state.get("kitchen_capacity", 1)
             self.unlocked_upgrades = state.get("unlocked_upgrades", [])
             self.order_queue = state.get("order_queue", [])
@@ -1271,3 +1271,4 @@ class GameEngine:
         print("\n" + "="*60)
         print("Grazie per aver giocato! 🍔".center(60))
         print("="*60)
+
